@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public title = 'angular-stop-arnaques';
+  public test = "git";
 }
