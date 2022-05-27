@@ -1,0 +1,30 @@
+<h1>Liste de mes articles</h1>
+
+<table class="table">
+    <thead>
+        <tr class="text-primary ">
+            <th>Titre</th>
+            <th>Sous-titre</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let article of listArticles">
+            <td class="text-primary fst-italic ">{{ article.title }}</td>
+            <td>{{ article.subtitle }}</td>
+            <td>{{ article.description }}</td>
+            <td>{{ article.dateOfPublication }}</td> <!--  Population de mes pays -->
+            <td>
+                <button class="btn btn-info" routerLink="/update-article/{{article.id}}">Modifier</button>
+            </td>
+            <td>
+                <button class="btn btn-primary" (click)="onClickDeleteArticle(article.id)">
+                    Supprimer
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

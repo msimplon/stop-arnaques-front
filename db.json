@@ -1,0 +1,31 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "users": [
+    {
+      "email": "manelbenallal@hotmail.fr",
+      "password": "$2a$10$gf3KB8WAr1yfZ6gMgRFnxeiVyv45Iph20doswPkBZ6cw3.oIqxwui",
+      "id": 1
+    },
+    {
+      "email": "benallal.nadial@hotmail.fr",
+      "password": "$2a$10$dpAkcbCSa6OlkEBQoA4MvexrMK61uXh6LH7CCWlFgmQPd484gxgEa",
+      "id": 2
+    }
+  ]
+}

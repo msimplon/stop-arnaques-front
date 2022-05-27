@@ -3,3 +3,7 @@
     font-size: 1.2em;
 
 }
+
+.clickable {
+    cursor: pointer ;
+}

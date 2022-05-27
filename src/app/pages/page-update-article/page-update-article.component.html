@@ -1,0 +1,35 @@
+<h1>Update country</h1>
+<form *ngIf="updateArticleForm" class="mt-5 col-md-6 m-auto" [formGroup]="updateArticleForm"
+    (ngSubmit)="onSubmitForm()">
+    <div class="mb-3">
+        <label for="title" class="form-label">Titre</label>
+        <div class="input-group">
+            <input placeholder="entrer le nom de votre article" formControlName="title" type="text" class="form-control"
+                aria-describedby="userHelp" id="title">
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="subtitle" class="form-label">Sous-titre</label>
+        <div class="input-group">
+            <input placeholder="entrer votre Sous-titre" formControlName="subtitle" type="text" class="form-control"
+                aria-describedby="userHelp" id="subtitle">
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="Description" class="form-label">Description</label>
+        <div class="input-group">
+            <input placeholder="entrer votre description" formControlName="Description" type="texte"
+                class="form-control" aria-describedby="userHelp" id="Description">
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="dateOfPublication" class="form-label">Date de publication</label>
+        <div class="input-group">
+            <input placeholder="entrer la date de publication" formControlName="dateOfPublication" type="text"
+                class="form-control" aria-describedby="userHelp" id="dateOfPublication">
+        </div>
+    </div>
+    <div class="d-grid col-12 col-md-2 ms-auto">
+        <button [disabled]="updateArticleForm.invalid" type="submit" class="btn btn-primary text-nowrap">Update</button>
+    </div>
+</form>
