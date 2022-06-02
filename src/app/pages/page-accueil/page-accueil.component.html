@@ -7,9 +7,17 @@
 
             </div> -->
 
+    <div class="card mb-3">
+        <img src="assets/influencer.jpg" class="card-img-top" alt=" influencer">
+    </div>
+
     <div class="card mb-3" *ngFor="let article of listArticles">
 
-        <img src="assets/influencer.jpg" class="card-img-top" alt=" influencer">
+        <!-- <div class="card mb-3">
+            <img src="assets/influencer.jpg" class="card-img-top" alt=" influencer">
+        </div> -->
+
+
         <div class="card-body">
             <h4 class="text-primary font-weight-bold">
                 <!-- E-commerce -->
@@ -18,7 +26,7 @@
             </h4>
             <h5 class="card-title bold">
                 <!-- Tuto déscryptage fiabilité d'un site marchand -->
-                {{article.subtitle}}
+                {{article.subTitle}}
             </h5>
             <p class="card-text ">
                 <!-- Ce n'est pas parce que vous n'achetez pas via un site proposé par un

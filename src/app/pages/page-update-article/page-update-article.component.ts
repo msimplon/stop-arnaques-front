@@ -28,10 +28,10 @@ export class PageUpdateArticleComponent implements OnInit {
        
         this.updateArticleForm = this.fb.group({
           title: [article.title, Validators.required],
-          subtitle: [article.subtitle, Validators.required],
+          subtitle: [article.subTitle, Validators.required],
           description: [article.description, Validators.required],
-          dateOfPublication: [article.dateOfPublication, Validators.required],
-          _id: [article.id]
+          dateOfPublication: [article.date, Validators.required],
+          id: [article.id]
         })
       })
     })
@@ -41,8 +41,6 @@ export class PageUpdateArticleComponent implements OnInit {
     const articleToUpdate = this.updateArticleForm.value;
 
     this.articleService.updateArticle(articleToUpdate).subscribe((resp) => {
-      //alert(resp.message);
-      // TODO Rediriger le user vers la page "/my-countries"
       this.router.navigateByUrl('/create');
     })
   }

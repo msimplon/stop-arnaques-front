@@ -18,7 +18,8 @@ export class PageMyArticlesComponent implements OnInit {
     })
   }
 
-  onClickDeleteArticle(articleId: string | undefined) {
+  onClickDeleteArticle(articleId: number | undefined) {
+    console.log(articleId);
     if (articleId) {
       this.articleService.deleteArticle(articleId).subscribe({
         next: (resp) => {

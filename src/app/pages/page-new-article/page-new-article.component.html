@@ -1,35 +1,34 @@
 <form id="form" class=" col-md-6 g-3 row-cols-xl-auto mx-auto mt-5" (ngSubmit)="onSubmitForm()"
     [formGroup]="newArticleForm">
     <div class="col text-center mt-2">
-        <h1> Ajouter un nouvel article </h1>
+        <h1 classe="text-primary"> Ajouter un nouvel article </h1>
     </div>
-    <div class=" mt-5">
-        <div class="col-md-8 mx-auto mb-3 ">
-            <label for="title" class="form-label">Titre</label>
-            <input placeholder="Entrer le nom de l'article" formControlName="title" type="text" name="title"
-                class="form-control" id="title">
-        </div>
-
-        <div class="col-md-8 mx-auto mb-3">
-            <label for="subtitle" class="form-label">Sous-titre</label>
-            <input placeholder="Entrer le titre de l'article" formControlName="titre" type="string" name="subtitle"
-                class="form-control" id="subtitle">
-        </div>
-
-        <div class="col-md-8 mx-auto mb-3">
-            <label for="dateOfPublication" class="form-label">Date</label>
-            <input placeholder="Entrer la date de l'article" formControlName="date" name="dateOfPublication"
-                type="string" class="form-control" id="dateOfPublication">
-        </div>
-        <div class="form-group">
-            <label for="description">Description</label>
-            <textarea placeholder="Entrer le contenu de l'article" formControlName="description" class="form-control"
-                name="description" id="description" rows="3"></textarea>
-        </div>
-        <div class="d-grid gap-2 col col-xl-4 mx-auto mt-5">
-            <button [disabled]="newArticleForm.invalid" class="btn btn-sucess" style="background-color: cornflowerblue"
-                type="submit">Créer</button>
-        </div>
-
+    <div class="form-group">
+        <label for="title" class="form-label">Titre</label>
+        <input placeholder="Entrer le nom de l'article" formControlName="title" type="text" name="title"
+            class="form-control" rows="3" id="title">
     </div>
+
+    <div class="form-group">
+        <label for="subtitle" class="form-label">Sous-titre</label>
+        <input placeholder="Entrer le titre de l'article" formControlName="subTitle" type="string" name="subtitle"
+            class="form-control" rows="3" id="subtitle">
+    </div>
+
+    <div class="form-group">
+        <label for="dateOfPublication" class="form-label">Date</label>
+        <input placeholder="Entrer la date de l'article" formControlName="date" name="dateOfPublication" type="date"
+            class="form-control" rows="3" id="dateOfPublication">
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea placeholder="Entrer le contenu de l'article" formControlName="description" class="form-control"
+            name="description" id="description" rows="3"></textarea>
+    </div>
+    <div class="d-grid gap-2 col col-xl-4 mx-auto mt-5">
+        <button [disabled]="newArticleForm.invalid" class="btn btn-sucess" style="background-color: cornflowerblue"
+            type="submit">Créer</button>
+    </div>
+
+
 </form>

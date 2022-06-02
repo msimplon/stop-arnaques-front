@@ -29,12 +29,12 @@ export class PageNewArticleComponent implements OnInit {
       this.newArticleForm.value.subTitle,
       this.newArticleForm.value.description,
       this.newArticleForm.value.date,
-
+      { "id": 1, "name": "Conseils"}
     );
 
     this.articleService.createNewArticle (newArticle).subscribe(() => {
       console.log("L'article a été créé !!!");
-      this.router.navigateByUrl('/create');
+      this.router.navigateByUrl('/my-articles');
     });
 
   }
