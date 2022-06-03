@@ -11,6 +11,9 @@ import { ArticleService } from 'src/app/services/article.service';
 })
 export class PageUpdateArticleComponent implements OnInit {
   updateArticleForm!: FormGroup;
+  public categoriesItems!: any;
+  public items: any;
+  public name: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -22,15 +25,17 @@ export class PageUpdateArticleComponent implements OnInit {
     // Récupération de l'id passée dans l'url 
     this.activatedRoute.params.subscribe((param) => {
       console.log(param);
-      // on fait appel à la méthode getCountryById de notre service 
-      // pour récupérer l'objet Country que l'on veut modifier 
+      
+
+      // on fait appel à la méthode getArticleById de notre service 
+      // pour récupérer l'objet Article que je veux modifier 
       this.articleService.getArticleById(param['id-article']).subscribe((article: Article) => {
        
         this.updateArticleForm = this.fb.group({
           title: [article.title, Validators.required],
           subtitle: [article.subTitle, Validators.required],
           description: [article.description, Validators.required],
-          dateOfPublication: [article.date, Validators.required],
+          date: [article.date, Validators.required],
           id: [article.id]
         })
       })
@@ -39,9 +44,9 @@ export class PageUpdateArticleComponent implements OnInit {
 
   onSubmitForm() {
     const articleToUpdate = this.updateArticleForm.value;
-
+// Rediriger le user vers la page "/my-articles"
     this.articleService.updateArticle(articleToUpdate).subscribe((resp) => {
-      this.router.navigateByUrl('/create');
+      this.router.navigateByUrl('/my-articles');
     })
   }
 

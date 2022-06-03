@@ -11,7 +11,8 @@ import { ArticleService } from '../../services/article.service';
 })
 export class PageNewArticleComponent implements OnInit {
   newArticleForm!: FormGroup;
-
+  public response: any;
+  public categoriesItems: any;
   constructor(private fb: FormBuilder, private articleService: ArticleService, private router: Router) { }
 
   ngOnInit(): void {
@@ -21,6 +22,14 @@ export class PageNewArticleComponent implements OnInit {
       description: [, Validators.required],
       date: ['', Validators.required]
     })
+  
+
+
+  this.articleService.getAllArticles().subscribe((this.response)) ; {
+      console.log(this.response);
+      this.categoriesItems = this.response;
+  }
+    
   }
 
   onSubmitForm() {
