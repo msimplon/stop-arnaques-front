@@ -14,10 +14,16 @@ export class ArticleService {
 
     createNewArticle (newArticle: Article) {
       const token = localStorage.getItem("token");
-
+      const body = {
+        "title": newArticle.title,
+        "subTitle": newArticle.subTitle,
+        "date": newArticle.date,
+        "description": newArticle.description,
+        "categoryId": +newArticle.category
+      }
       return this.http.post(
         `${this.urlApi}/articles`,
-        newArticle, 
+        body, 
         { headers: { Authorization: `Bearer ${token}` } }
 
       )
@@ -31,10 +37,17 @@ export class ArticleService {
       )
     }
 
+  getAllCategories() {
+    const token = localStorage.getItem("token");
+    return this.http.get(`${this.urlApi}/categories`
+      , { headers: { Authorization: `Bearer ${token}` } }
+    )
+  }
+
     getArticleById(articleId: string): Observable < Article > {
       const token = localStorage.getItem("token");
 
-        return this.http.get<Article>(`${this.urlApi}/articles/${articleId}`,
+        return this.http.get<Article>(`${this.urlApi}/articles/article-view/${articleId}`,
           { headers: { Authorization: `Bearer ${token}` } }
 
         )
@@ -44,10 +57,12 @@ export class ArticleService {
       const token = localStorage.getItem("token");
 
       const body = {
-        title: article.title,
-        subtitle: article.subTitle,
-        description: article.description,
-        date: article.date
+        "title": article.title,
+        "subTitle": article.subTitle,
+        "date": article.date,
+        "description": article.description,
+        "categoryId": article.category,
+        "id": article.id
       }
 
       return this.http.put<any>(`${this.urlApi}/articles/${article.id}`,

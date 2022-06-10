@@ -12,38 +12,42 @@ import { ArticleService } from '../../services/article.service';
 export class PageNewArticleComponent implements OnInit {
   newArticleForm!: FormGroup;
   public response: any;
-  public categoriesItems: any;
-  constructor(private fb: FormBuilder, private articleService: ArticleService, private router: Router) { }
+  public categories: any;
+  public item: any;
+  public name: any;
+
+  constructor
+  (private fb: FormBuilder, private articleService: ArticleService, private router: Router) { }
 
   ngOnInit(): void {
     this.newArticleForm = this.fb.group({
       title: ['', Validators.required],
       subTitle: [, Validators.required],
+      category: ['', Validators.required],
       description: [, Validators.required],
       date: ['', Validators.required]
     })
-  
 
-
-  this.articleService.getAllArticles().subscribe((this.response)) ; {
-      console.log(this.response);
-      this.categoriesItems = this.response;
-  }
+    this.articleService.getAllCategories().subscribe((response) => {
+      console.log(response);
+      this.categories = response;
+    })
     
   }
 
   onSubmitForm() {
     const newArticle = new Article(
+      '0',
       this.newArticleForm.value.title,
       this.newArticleForm.value.subTitle,
       this.newArticleForm.value.description,
       this.newArticleForm.value.date,
-      { "id": 1, "name": "Conseils"}
+      this.newArticleForm.value.category,
     );
-
-    this.articleService.createNewArticle (newArticle).subscribe(() => {
+    console.log(newArticle);
+    this.articleService.createNewArticle(newArticle).subscribe(() => {
       console.log("L'article a été créé !!!");
-      this.router.navigateByUrl('/my-articles');
+      this.router.navigateByUrl('my-articles');
     });
 
   }

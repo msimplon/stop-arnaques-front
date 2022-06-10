@@ -11,8 +11,8 @@ import { ArticleService } from 'src/app/services/article.service';
 })
 export class PageUpdateArticleComponent implements OnInit {
   updateArticleForm!: FormGroup;
-  public categoriesItems!: any;
-  public items: any;
+  public categories!: any;
+  public item: any;
   public name: any;
 
   constructor(
@@ -22,28 +22,40 @@ export class PageUpdateArticleComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    // Récupération de l'id passée dans l'url 
-    this.activatedRoute.params.subscribe((param) => {
-      console.log(param);
+    
       
-
+    this.activatedRoute.params.subscribe((param) => {
+      console.log(param)
       // on fait appel à la méthode getArticleById de notre service 
       // pour récupérer l'objet Article que je veux modifier 
       this.articleService.getArticleById(param['id-article']).subscribe((article: Article) => {
        
         this.updateArticleForm = this.fb.group({
+          id: [article.id],
           title: [article.title, Validators.required],
-          subtitle: [article.subTitle, Validators.required],
+          subTitle: [article.subTitle, Validators.required],
           description: [article.description, Validators.required],
           date: [article.date, Validators.required],
-          id: [article.id]
+          category: [article.category, Validators.required]
         })
       })
+    })
+
+    this.articleService.getAllCategories().subscribe((response) => {
+      console.log(response);
+      this.categories = response;
     })
   }
 
   onSubmitForm() {
-    const articleToUpdate = this.updateArticleForm.value;
+    const articleToUpdate = new Article(
+    this.updateArticleForm.value.id,
+    this.updateArticleForm.value.title,
+    this.updateArticleForm.value.subTitle,
+    this.updateArticleForm.value.description,
+    this.updateArticleForm.value.date,
+    this.updateArticleForm.value.category
+    );
 // Rediriger le user vers la page "/my-articles"
     this.articleService.updateArticle(articleToUpdate).subscribe((resp) => {
       this.router.navigateByUrl('/my-articles');

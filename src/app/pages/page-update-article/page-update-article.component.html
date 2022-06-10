@@ -1,4 +1,5 @@
 <h1 class="text-primary">Update article</h1>
+
 <form class="mt-5 col-md-6 m-auto" [formGroup]="updateArticleForm" (ngSubmit)="onSubmitForm()">
     <div class="mb-3">
         <label for="title" class="form-label">Titre</label>
@@ -25,11 +26,10 @@
             class="form-control" rows="3" id="date">
     </div>
     <div class="mb-3">
-        <label for="categorie" class="form-label">Catégorie</label>
+        <label for="categoryId" class="form-label">Catégorie</label>
         <div>
-            <select name="category" class="form-select" aria-label="Default select example" formControlName="category">
-                <option selected *ngFor="let items of categoriesItems" value={{items.id}}>{{ items.name }}</option>
-                <!-- <option value="items.id"></option> -->
+            <select name="categoryId" class="form-select" formControlName="categoryId">
+                <option *ngFor="let item of categories" value={{item.id}}>{{ item.name }}</option>
             </select>
         </div>
     </div>

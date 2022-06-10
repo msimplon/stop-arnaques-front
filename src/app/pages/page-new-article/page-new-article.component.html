@@ -14,7 +14,14 @@
         <input placeholder="Entrer le titre de l'article" formControlName="subTitle" type="string" name="subtitle"
             class="form-control" rows="3" id="subtitle">
     </div>
-
+    <div class="mb-3">
+        <label for="category" class="form-label">Catégorie</label>
+        <div>
+            <select name="category" class="form-select" formControlName="category">
+                <option *ngFor="let item of categories" value={{item.id}}>{{ item.name }}</option>
+            </select>
+        </div>
+    </div>
     <div class="form-group">
         <label for="date" class="form-label">Date</label>
         <input placeholder="Entrer la date de l'article" formControlName="date" name="date" type="date"
@@ -25,16 +32,7 @@
         <textarea placeholder="Entrer le contenu de l'article" formControlName="description" class="form-control"
             name="description" id="description" rows="3"></textarea>
 
-        <div class="mb-3">
-            <label for="categorie" class="form-label">Catégorie</label>
-            <div>
-                <select name="category" class="form-select" aria-label="Default select example"
-                    formControlName="category">
-                    <option selected *ngFor="let items of categoriesItems" value={{items.id}}>{{ items.name }}</option>
-                    <!-- <option value="items.id"></option> -->
-                </select>
-            </div>
-        </div>
+
 
     </div>
     <div class="d-grid gap-2 col col-xl-4 mx-auto mt-5">
