@@ -23,13 +23,7 @@ export class PageMyArticlesComponent implements OnInit {
     if (articleId) {
       this.articleService.deleteArticle(articleId).subscribe({
         next: (resp) => {
-          // Todo 
-          /**
-           * Rechercher dans le tableau this.listCountries
-           * l'objet country avec l'_id == countryId
-           * et le supprimer pour que notre liste de pays
-           * n'affiche plus le pays supprimé
-           */
+        
 
           // Version compacte
           this.listArticles = this.listArticles.filter(article => article.id !== articleId);

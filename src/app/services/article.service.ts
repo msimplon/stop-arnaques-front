@@ -87,16 +87,3 @@ export class ArticleService {
     }
 
     
-
-
-
-//     createNewArticle(newArticle: Article) {
-
-
-//       return this.http.post(
-//         `${this.urlApi}/api/article`,
-//         newArticle,
-
-
-//          
-// }

@@ -1,11 +1,6 @@
 <main class="container-xl mt-5">
     <h2 class="text-primary fst-italic ">Information, Prévention, Actualité, Faits de société</h2>
     <br>
-    <!-- <div class="row">
-        <div class="col-md-8"> -->
-    <!-- <div class="card mb-3">
-
-            </div> -->
 
     <div class="card mb-3">
         <img src="assets/influencer.jpg" class="card-img-top" alt=" influencer">
@@ -13,25 +8,14 @@
 
     <div class="card mb-3" *ngFor="let article of listArticles">
 
-        <!-- <div class="card mb-3">
-            <img src="assets/influencer.jpg" class="card-img-top" alt=" influencer">
-        </div> -->
-
-
         <div class="card-body">
             <h4 class="text-primary font-weight-bold">
-                <!-- E-commerce -->
                 {{article.title}}
-
             </h4>
             <h5 class="card-title bold">
-                <!-- Tuto déscryptage fiabilité d'un site marchand -->
                 {{article.subTitle}}
             </h5>
             <p class="card-text ">
-                <!-- Ce n'est pas parce que vous n'achetez pas via un site proposé par un
-                        influenceur que
-                        vous êtes à l'abri des arnaques, bien loin de là : Google regorge de sites frauduleux... -->
                 {{article.description}}
             </p>
             <p class="card-text text-md-center text-info"><small class="text-muted"></small>
@@ -39,8 +23,4 @@
             </p>
         </div>
     </div>
-
-    <!-- </div>
-
-    </div> -->
 </main>

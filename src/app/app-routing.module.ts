@@ -11,9 +11,6 @@ import { PageMyArticlesComponent } from './pages/page-my-articles/page-my-articl
 import { PageUpdateArticleComponent } from './pages/page-update-article/page-update-article.component';
 
 
-//tableau de routes
-//ici on créer une url associée
-
 
 const routes: Routes = [
   {path: '', component: PageAccueilComponent }, 
@@ -21,13 +18,11 @@ const routes: Routes = [
   {path :'contact', component:PageContactComponent},
   {path: 'sign-in', component: PageSignInComponent},
   {path: 'sign-up', component: PageSignUpComponent},
-  {path: 'my-articles', canActivate:[AuthGuard] , component: PageNewArticleComponent},
-  {path: 'new-article', canActivate: [AuthGuard], component:  PageMyArticlesComponent},
+  { path: 'my-articles', canActivate: [AuthGuard], component: PageMyArticlesComponent},
+  { path: 'new-article', canActivate: [AuthGuard], component: PageNewArticleComponent },
   {path: 'update-article/:id-article', canActivate: [AuthGuard], component: PageUpdateArticleComponent},
 
 ];
-
-//auth gard est notre class de notre fichier auth gard.ts, toute facon tous les imports sont des class de nos fichiers
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

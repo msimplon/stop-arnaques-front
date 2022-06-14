@@ -36,7 +36,7 @@ export class PageUpdateArticleComponent implements OnInit {
           subTitle: [article.subTitle, Validators.required],
           description: [article.description, Validators.required],
           date: [article.date, Validators.required],
-          category: [article.category, Validators.required]
+          categoryId: [article.category, Validators.required]
         })
       })
     })
@@ -54,9 +54,10 @@ export class PageUpdateArticleComponent implements OnInit {
     this.updateArticleForm.value.subTitle,
     this.updateArticleForm.value.description,
     this.updateArticleForm.value.date,
-    this.updateArticleForm.value.category
+    this.updateArticleForm.value.categoryId
     );
-// Rediriger le user vers la page "/my-articles"
+console.log(articleToUpdate);
+
     this.articleService.updateArticle(articleToUpdate).subscribe((resp) => {
       this.router.navigateByUrl('/my-articles');
     })

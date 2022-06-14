@@ -1,6 +1,7 @@
 <h1 class="text-primary">Update article</h1>
 
-<form class="mt-5 col-md-6 m-auto" [formGroup]="updateArticleForm" (ngSubmit)="onSubmitForm()">
+<form *ngIf="updateArticleForm" class="mt-5 col-md-6 m-auto" [formGroup]="updateArticleForm"
+    (ngSubmit)="onSubmitForm()">
     <div class="mb-3">
         <label for="title" class="form-label">Titre</label>
         <div class="input-group">

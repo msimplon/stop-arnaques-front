@@ -16,8 +16,6 @@ import { PageMyArticlesComponent } from './pages/page-my-articles/page-my-articl
 import { PageUpdateArticleComponent } from './pages/page-update-article/page-update-article.component';
 import { AuthInterceptor} from './auth.interceptor';
 
-//importation de ReactiveFormsModule dans les meta du decorateur qui me permet 
-//de provider le service FormBuilder que j'inject dans mon composant
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,8 +36,6 @@ import { AuthInterceptor} from './auth.interceptor';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  //permet d'ajouter à nos formulaires, les directives formGroup et formControlName afin de controler un formulaire
-  //depuis sa class components
 
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true }
