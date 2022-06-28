@@ -1,0 +1,65 @@
+<div
+    class="container-xl justify-content-center col-md-5 g-0 row-cols-xl-auto mx-auto mt-5 shadow-lg p- mb-1 bg-body rounded">
+    <div class="card-header text-white bg-info text-md-center">
+        Formulaire de contact
+    </div>
+    <div class="card-body justify-content-end" style="width: 50rem">
+        <form (ngSubmit)="saveData()" [formGroup]="contactForm">
+            <div class="form-row">
+                <div class="col-md-6 md-3">
+                    <label>Nom</label>
+                    <input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Nom"
+                        required minlength="4" />
+                </div>
+                <div class="form-text alert-danger"
+                    *ngIf="contactForm.controls['lastName'].touched && contactForm.controls['lastName'].getError('required')">
+                    Entrer votre nom
+                </div>
+
+                <div class="col-md-6 md-3">
+                    <label>Prenom</label>
+                    <input type="text" class="form-control" id="firstName" formControlName="firstName"
+                        placeholder="Prenom" required maxlength="20" />
+                    <div class="form-text alert-danger"
+                        *ngIf="contactForm.controls['firstName'].touched && contactForm.controls['firstName'].getError('required')">
+                        Entrer votre prénnom
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 md-3">
+                    <label>Email</label>
+                    <textarea type="email" class="form-control" id="email" formControlName="email" placeholder="email"
+                        required minlength="4"></textarea>
+                </div>
+                <div class="form-text alert-danger" *ngIf="contactForm.controls['email'].touched &&
+                contactForm.controls['email'].getError('required')">
+                    Veuillez renseigner votre adresse mail.
+                </div>
+                <div class="form-text alert-danger"
+                    *ngIf="contactForm.controls['email'].touched && contactForm.controls['email'].getError('email')">
+                    Le format de l'email n'est pas correct ... 😢
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <div class="form-check mt-4 pt-3">
+                            <label for="sendCatalogId" class="form-check-label">
+                                <input type="checkbox" class="form-check-input" formControlName="sendCatalog">
+                                oui je souhaite recevoir la pub
+                            </label>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="text-right">
+                    <button class="btn btn-info" type="submit" [disabled]="!contactForm.valid">
+                        Envoyer
+                    </button>
+                </div>
+
+            </div>
+        </form>
+
+    </div>

@@ -8,14 +8,14 @@ import { AuthentificationService } from 'src/app/services/authentification.servi
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-  public isAuthentificated = false;
+  public isAuthenticated = false;
 
   constructor(private authService: AuthentificationService, private router: Router) { }
 //injection du composant service dans le constructeur 
   ngOnInit(): void {
    const token= localStorage.getItem('token')
    if (token !== null || token !=='') {
-     this.isAuthentificated = true;
+     this.isAuthenticated = true;
    }
 // ON SE SERT DE CE SERVICE PUR RECUPERER LE MESSAGE ET SOUSCRIRE A CE MESSAGER 
 // LE MESSAGSER TRANSPORT UN MESSAGE avertissant lorsq'un utilisateur se connecte ou déconnecte 
@@ -25,23 +25,22 @@ export class NavBarComponent implements OnInit {
 //donc booléen true 
 
     this.authService.messager.subscribe((message: boolean) => {
-      this.isAuthentificated = message;
+      this.isAuthenticated = message;
     })
 //subscribe est un observable 
 // on type le bouléen car il est transporté par le subject
   
-    this.authService.newsletter.subscribe((textNewsletter: string) => {
+    // this.authService.newsletter.subscribe((textNewsletter: string) => {
       //on utilise next pour dire à la nav bar qu'on s'est bien co
       //donc on a communication entre 2 composants : page sign -in en passant par le messager su service vers la nav bar
     
     
-  })
 
 }
 
 onClickLogout() {
   localStorage.removeItem ('token');
-  this.isAuthentificated = false;
+  this.isAuthenticated = false;
   this.router.navigateByUrl('/sign-in');
 
 

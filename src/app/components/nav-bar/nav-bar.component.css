@@ -1,9 +1,13 @@
-.space {
-    margin-top: 10px;
-    font-size: 1.2em;
+  /* nav-bar {
+    margin-top: 1px;
+  } */
 
-}
+   .logo {
+    width: 6em;
+    height: auto;
+    margin-top: 1em;
+      }
 
-.clickable {
-    cursor: pointer ;
-}
+    .clickable {
+    cursor: pointer;
+      }

@@ -1,0 +1,26 @@
+<main class="container-xl mt-5">
+    <h2 class="text-primary fst-italic ">Information, Prévention, Actualité, Faits de société</h2>
+    <br>
+
+    <div class="col-md-8">
+        <img src="assets/influencer.jpg" class="card-img-top" alt=" influencer">
+    </div>
+
+    <div class="col-md-8" *ngFor="let article of listArticles">
+
+        <div class="card-body">
+            <h4 class="text-primary font-weight-bold">
+                {{article.title}}
+            </h4>
+            <h5 class="card-title bold">
+                {{article.subTitle}}
+            </h5>
+            <p class="card-text ">
+                {{article.description}}
+            </p>
+            <p class="card-text text-md-center text-info"><small class="text-muted"></small>
+                {{article.date}}
+            </p>
+        </div>
+    </div>
+</main>

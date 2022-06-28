@@ -1,0 +1,41 @@
+<h1 class="text-primary">Update article</h1>
+
+<form *ngIf="updateArticleForm" class="mt-5 col-md-6 m-auto" [formGroup]="updateArticleForm"
+    (ngSubmit)="onSubmitForm()">
+    <div class="mb-3">
+        <label for="title" class="form-label">Titre</label>
+        <div class="input-group">
+            <input placeholder="entrer le nom de votre article" formControlName="title" type="text" class="form-control"
+                aria-describedby="userHelp" id="title">
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="subTitle" class="form-label">Sous-titre</label>
+        <div class="input-group">
+            <input placeholder="entrer votre Sous-titre" formControlName="subTitle" type="text" class="form-control"
+                aria-describedby="userHelp" id="subTitle">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea placeholder="Entrer le contenu de l'article" formControlName="description" class="form-control"
+            name="description" id="description" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="date" class="form-label">Date</label>
+        <input placeholder="Entrer la date de l'article" formControlName="date" name="date" type="date"
+            class="form-control" rows="3" id="date">
+    </div>
+    <div class="mb-3">
+        <label for="categoryId" class="form-label">Catégorie</label>
+        <div>
+            <select name="categoryId" class="form-select" formControlName="categoryId">
+                <option *ngFor="let item of categories" value={{item.id}}>{{ item.name }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="d-grid col-12 col-md-2 ms-auto">
+        <button [disabled]="updateArticleForm.invalid" type="submit"
+            class="btn btn-primary text-nowrap">Modifier</button>
+    </div>
+</form>
