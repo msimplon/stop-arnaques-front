@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup,Validators } from "@angular/forms";
+import { Router } from '@angular/router';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 
 @Component({
@@ -9,28 +10,39 @@ import { AuthentificationService } from 'src/app/services/authentification.servi
 })
 export class PageSignUpComponent implements OnInit {
   public signUpForm!: FormGroup;
-  fieldTextType: boolean = false;
+  submitted = false; 
 
-
-  constructor(private fb : FormBuilder, private authService: AuthentificationService) {}
+  constructor(private fb: FormBuilder, private authService: AuthentificationService, private router: Router) {}
 
   ngOnInit(): void {
-    this.signUpForm = this.fb.group({
-      username: ['', [Validators.required,Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8),Validators.required]],
-      confirmPassword: ['', [Validators.required]]
-
-
-    },
-    {
-      validator: this.passwordMatchValidator
-    }
+    this.signUpForm = this.fb.group(
+      {
+        username: ['', [Validators.required, Validators.email]],
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.maxLength(12),
+          ],
+        ],
+        confirmPassword: ['', Validators.required],
+      },
+      {
+        validator: this.passwordMatchValidator,
+        // on met ce validator car il verifie les deux champs password et
+        // le champs confirm password, si non on pourrait le mettre dans
+        //un tableau comme le password.
+      }
     );
-
   }
-  passwordMatchValidator(form: FormGroup) {
 
-  
+  // la méthode pour vérifier si le mot de passe de confirmation
+  // est le mme que le mot de passe saisie.
+  passwordMatchValidator(form: FormGroup) {
+    // if(form.get('password') !== null) {
+    //   if(form.get('password').value) {
+
     // Le point d'interrogation permet de ne pas 
     // accéder à la valeur de 'value' si le password est 'null' 
     if (form.get('password')?.value === form.get('confirmPassword')?.value) {
@@ -41,23 +53,20 @@ export class PageSignUpComponent implements OnInit {
   }
 
 onSubmitForm (){
+
+this.submitted = true;
 console.log (this.signUpForm.value);
 const username = this.signUpForm.value.username;
 const password = this.signUpForm.value.password;
+const confirmPassword = this.signUpForm.value.confirmPassword;
 
 
 
-this.authService.registerUser(username, password).subscribe ((reponseAPI) => {
-console.log(reponseAPI);
-})
-
-
-}
-
-  toggleFieldTextType(): void {
-    this.fieldTextType = !this.fieldTextType;
+    this.router.navigateByUrl('/');
+    this.authService
+      .registerUser(username, password)
+      .subscribe((responseApi) => {
+        console.log(responseApi);
+      });
   }
-
-
 }
-

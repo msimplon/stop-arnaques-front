@@ -9,63 +9,61 @@
                 <input type="text" class="form-control" aria-describedby="userHelp" id="username"
                     formControlName="username">
             </div>
-            <div id="userHelp" class="form-text alert-danger"
-                *ngIf="signUpForm.controls['username'].touched && signUpForm.controls['username'].invalid">
+            <div class="form-text alert-danger"
+                *ngIf="signUpForm.controls['username'].touched && signUpForm.controls['username'].getError('required')">
                 L'adresse email est obligatoire
             </div>
             <div class="form-text alert-danger"
-                *ngIf="signUpForm.controls['username'].touched && signUpForm.controls['username'].getError('email') ">
+                *ngIf="signUpForm.controls['username'].touched && signUpForm.controls['username'].getError('email')">
                 Le format de l'email n'est pas correct ... 😢
             </div>
         </div>
 
-        <label for="userPassword" class="form-label mandatory">Mot de passe</label>
-        <div class="input-group">
-            <input formControlName="userPassword" [type]="fieldTextType ? 'text' : 'password'" class="form-control"
-                id="userPassword" aria-describedby="passwordHelp">
-            <div class="input-group-append">
-
-                <button type="button" class="input-group-text" (click)="toggleFieldTextType()">
-                    <i class="bi" [ngClass]="{ 'bi-eye-slash': !fieldTextType, 'bi-eye': fieldTextType }">
-                    </i>
-                </button>
-
-            </div>
-        </div>
-
-        <div id="passwordHelpBlock" class="form-text"> Le mot de passe doit contenir au minimum 8 caractères, à
-            savoir : au moins une lettre minuscule et une lettre majuscule, un caractère spécial et un chiffre.
-        </div>
-        <div *ngIf="signUpForm.controls['password'].touched && signUpForm.controls['password'].getError('required')"
-            class="form-text alert-danger">
+        <label for="password" class="form-label">Mot de passe</label>
+        <input formControlName="password" name="password" type="password" class="form-control" id="password" />
+        <div id="userHelp" class="form-text alert-danger"
+            *ngIf="signUpForm.controls['password'].touched &&signUpForm.controls['password'].getError('required')">
             Le mot de passe est obligatoire
         </div>
-        <div *ngIf="signUpForm.controls['password'].dirty && signUpForm.controls['password'].getError('minlength')"
-            class="form-text alert-danger">
-            Le mot de passe doit avoir une longueur min de 8 caractères
+
+
+        <div id="userHelp" class="form-text alert-danger" *ngIf="
+                  signUpForm.controls['password'].dirty &&
+                  signUpForm.controls['password'].getError('minlength')">
+            Le mot de passe doit avoir une longueur minimale de 8 caractère
         </div>
-        <label for="userPassword" class="form-label mandatory">Mot de passe</label>
-        <div class="input-group">
-            <input formControlName="userPassword" [type]="fieldTextType ? 'text' : 'password'" class="form-control"
-                id="userPassword" aria-describedby="passwordHelp">
-            <div class="input-group-append">
-
-                <button type="button" class="input-group-text" (click)="toggleFieldTextType()">
-                    <i class="bi" [ngClass]="{ 'bi-eye-slash': !fieldTextType, 'bi-eye': fieldTextType }">
-                    </i>
-                </button>
-            </div>
 
 
-
+        <div id="passwordHelpBlock" class="form-text">
+            De 8 à 12 cararctères, 1 majuscule, 1 minuscule, 1 chiffre et 1
+            caractère spécial.
         </div>
+
+        <label for="confirmPassword" class="form-label">Confirmer mot de passe</label>
+        <input formControlName="confirmPassword" type="password" class="form-control" id="confirmPassword" />
         <div class="form-text alert-danger"
             *ngIf="signUpForm.controls['confirmPassword'].dirty && signUpForm.getError('mismatch')">
-            Les mots de passe doivent être similaires 😉
+            Les mots de passe doivent etre similaire😉
         </div>
+
         <div class="d-grid gap-2 col col-xl-4 mx-auto mt-5">
-            <button [disabled]="signUpForm.invalid" type="submit"
-                class="btn btn-primary text-nowrap">S'inscrire</button>
+            <button [disabled]="signUpForm.invalid" class="btn btn-success" type="submit"
+                class="btn btn-primary text-nowrap">S'inscrire
+            </button>
         </div>
+
     </form>
 </main>
+
+
+<!-- </div>
+        <div *ngIf="signUpForm.controls['confirmPassword'].dirty && signUpForm.getError('mismatch')"
+            class="p-1 alert-danger">
+            Les mots de passe doivent être similaires 😉
+        </div>
+
+<!-- <div class="d-grid gap-2 col col-xl-4 mx-auto mt-5">
+            <button [disabled]="signUpForm.invalid" class="btn btn-success" type="submit"
+                class="btn btn-primary text-nowrap">S'inscrire</button>
+        </div>
+    </form> -->
